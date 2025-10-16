@@ -1,0 +1,33 @@
+//using the xor operator
+
+class Solution {
+    public int singleNumber(int[] nums) {
+        int ans = 0;
+        for (int i = 0; i < nums.length; i++) {
+            ans = ans ^ nums[i];
+        }
+        return ans;
+    }
+}
+
+//Using HashMap / HashSet
+
+import java.util.HashSet;
+
+class Solution {
+    public int singleNumber(int[] nums) {
+        HashSet<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            if (set.contains(num))
+                set.remove(num);
+            else
+                set.add(num);
+        }
+        // Only one element will remain
+        for (int num : set) {
+            return num;
+        }
+        return -1; // should not happen
+    }
+}
+
